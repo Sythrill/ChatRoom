@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import styles from './UserForm.css';
 
 class UserForm extends Component {
@@ -13,11 +14,11 @@ class UserForm extends Component {
     }
 
     handleChange(e) {
-        this.setState({name: e.target.value});
+        this.setState({ name : e.target.value });
     }
 
     render() {
-        return (
+        return(
             <form className={styles.UserForm} onSubmit={e => this.handleSubmit(e)}>
                 <input
                     className={styles.UserInput}

@@ -26,14 +26,18 @@ io.on('connection', function (socket) {
             users: userService.getAllUsers()
         });
     });
+});
 
+io.on('connection', function (socket) {
     socket.on('disconnect', function () {
         userService.removeUser(socket.id);
         socket.broadcast.emit('update', {
             users: userService.getAllUsers()
         });
     });
+});
 
+io.on('connection', function (socket) {
     socket.on('message', function (message) {
         const {name} = userService.getUserById(socket.id);
         socket.broadcast.emit('message', {
@@ -41,9 +45,9 @@ io.on('connection', function (socket) {
             from: name
         });
     });
-
 });
 
-server.listen(3000, function () {
-    console.log('listening on *:3000');
+
+server.listen(8080, function () {
+    console.log('listening on *:8080');
 });
